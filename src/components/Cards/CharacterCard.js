@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Grid, Typography } from '@material-ui/core'
+import { Grid } from '@material-ui/core'
 import { makeStyles } from '@mui/styles';
 import Divider from '../../components/Divider';
 import comic from '../../assets/images/comic.jpeg'

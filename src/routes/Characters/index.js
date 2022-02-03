@@ -4,6 +4,7 @@ import shield from '../../assets/images/shield.jpeg'
 import { makeStyles } from '@mui/styles';
 import GridElements from '../../components/Grid';
 import { charactersService } from '../../services/service.characters';
+import SearchBar from '../../components/SearchBar';
 
 const useStyles = makeStyles(theme => ({
     main: {
@@ -28,7 +29,7 @@ const useStyles = makeStyles(theme => ({
         fontFamily: 'MarvelRegular',
         fontSize: '80px',
         letterSpacing: '5px',
-        margin: 0
+        margin: '0 0 30px 0'
     }
 }));
 
@@ -38,6 +39,7 @@ const Characters = () => {
     const classes = useStyles();
     const [elements, setElements] = useState([])
     const [pagination, setPagination] = useState('')
+    const [keyword, setKeyword] = useState('')
 
     const aux = [
         {name: 'capitan', y:'1'},
@@ -48,11 +50,20 @@ const Characters = () => {
     ]
 
     useEffect(async () => {
-        let aux = await charactersService.getCharacters()
+        let aux
+        if(keyword !== ''){
+            aux = await charactersService.getCharacters(keyword)
+        }else{
+            aux = await charactersService.getCharacters('')
+        }
         setElements(aux.data.results)
         delete aux.data.results
         setPagination(aux.data)
-    }, [])
+    }, [ , keyword])
+
+    const handleChange = (event) => {
+        setKeyword(event.target.value)
+    }
 
     return (
         <div>
@@ -60,7 +71,7 @@ const Characters = () => {
                 <Grid className={classes.titleBox}>
                     <p className={classes.title}>CHARACTERS</p>
                     <Grid>
-                        buscador
+                        <SearchBar placeholder="Search for characters" keyword={keyword} onChange={handleChange}/>
                     </Grid>
                 </Grid>
             </Grid>

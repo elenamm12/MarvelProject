@@ -3,6 +3,7 @@ import { Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@mui/styles';
 import Divider from '../../components/Divider';
 import CharacterCard from '../Cards/CharacterCard';
+import { getBottomNavigationUtilityClass } from '@mui/material';
 
 const useStyles = makeStyles(theme => ({
     main: {
@@ -21,9 +22,12 @@ const GridElements = (props) => {
 
     const classes = useStyles();
     const [elements, setElements] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(async () => {
+        setLoading(true)
         setElements(props.list)
+        setLoading(false)
     }, [props.list])
 
     return (
@@ -31,12 +35,15 @@ const GridElements = (props) => {
             <Grid className={classes.main}>
                 <Divider />
                 <Grid className={classes.container}>
-                    <Grid container justifyContent="center">
-                        {elements.map((element, index) => (
-                            <CharacterCard key={index} element={element} />
-                        ))}
-                    </Grid>
-
+                    {!loading ?
+                        <Grid container justifyContent="center">
+                            {elements.map((element, index) => (
+                                <CharacterCard key={index} element={element} />
+                            ))}
+                        </Grid>
+                        :
+                        getBottomNavigationUtilityClass
+                    }
                     <Grid>
                         pagination
                     </Grid>

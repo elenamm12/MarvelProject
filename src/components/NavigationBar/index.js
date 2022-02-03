@@ -30,8 +30,12 @@ const useStyles = makeStyles(theme => ({
         fontSize: '12px',
         backgroundColor: 'transparent',
         border: 'none',
-        color: 'rgba(255,255,255, 1)',
-        textDecoration: 'none'
+        color: 'rgba(255,255,255, 0.8)',
+        textDecoration: 'none',
+        transition: '0.3s all',
+        '&:hover': {
+            color: '#FBFBFB'
+        }
     }
 }));
 
@@ -65,7 +69,11 @@ const NavigationBar = () => {
 
     return (
         <Box display="flex" className={classes.navbar} style={{ backgroundColor: top ? '#010101' : 'transparent', height: top ? '60px' : '75px' }}>
-            <Grid item md={6} lg={6} xl={9} className={classes.logo}>Home</Grid>
+            <Grid item md={6} lg={6} xl={9} className={classes.logo}>
+                <a className={classes.item} href={`/`}>
+                    HOME
+                </a>
+            </Grid>
             {/* VALIDATION FOR SCREEN SIZE ==> BURGER OR TEXT BUTTONS */}
             {pages.map(page => (
                 <Grid key={page.path} item sm={2} md={1.5} lg={1} xl={0.5} className={classes.itemBox}>
