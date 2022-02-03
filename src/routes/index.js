@@ -3,6 +3,7 @@ import {Navigate, Route, Routes} from 'react-router';
 // import {useSelector} from 'react-redux';
 import {useLocation} from 'react-router-dom';
 import Dashboard from './Dashboard';
+import Characters from './Characters';
 
 // export const RestrictedRoute = ({component: Component, ...rest}) => {
 //     const {token} = ''
@@ -41,31 +42,11 @@ const RouterComponent = () => {
     return (
         <React.Fragment>
             <Routes>
-                {/* <RestrictedRoute path="/dashboard" component={Dashboard}/>
-                <RestrictedRoute path="/account" component={Account}/>
-                <RestrictedRoute path="/routes" component={RoutesModule}/>
-                <RestrictedRoute path="/measurements" component={Measurements}/>
-                <RestrictedRoute path="/users" component={UsersModule}/>
-                <RestrictedRoute path="/companies" component={CompaniesModule}/>
-                <RestrictedRoute path="/sensors" component={SensorsModule}/>
-                <RestrictedRoute path="/adminSensors" component={AdminSensorsModule}/>
-                <RestrictedRoute path="/tenants" component={TenantsModule}/>
-                <RestrictedRoute path="/machine-templates" component={Templates}/>
-                <RestrictedRoute path="/component-templates" component={CTemplates}/>
-                <RestrictedRoute path="/devices" component={Devices}/> */}
-                {/*elements*/}
-                {/* <RestrictedRoute path="/pointDashboard/:Id/:create/:edit/:view/:delete/:clone" component={PointModule}/>
-                <RestrictedRoute path="/machineDashboard/:Id/:create/:edit/:view/:delete/:clone" component={MachineModule}/>
-                <RestrictedRoute path="/componentDashboard/:Id/:create/:edit/:view/:delete/:clone" component={ComponentModule}/>
-                <RestrictedRoute path="/locationDashboard/:Id/:create/:edit/:view/:delete/:clone" component={LocationModule}/>
-
-                <RestrictedRoute path="/point/:pointId/measurement/:Id/:delete" component={MeasurementModule}/>
-                <Route path="/signin" component={Login}/>
-                <Route path="/signup" component={Register}/>
-                <Route path="/forgot-password" component={ForgotPasswordPage}/>
-                <Route path="/recover-password/:key" component={RecoverPasswordPage}/> */}
-                {/* <Route path="/activation/:key" component={ActivateAccount}/> */}
-                {/* <Route component={Error404}/> */}
+                <Route path="/characters" element={<Characters/>}/>
+                <Route path="/comics" element={<Dashboard/>}/>
+                <Route path="/creators" element={<Dashboard/>}/>
+                <Route path="/events" element={<Dashboard/>}/>
+                <Route path="/stories" element={<Dashboard/>}/>
                 <Route path="/" element={<Dashboard/>}/>
             </Routes>
         </React.Fragment>

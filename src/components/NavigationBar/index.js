@@ -1,6 +1,7 @@
-import React, { useContext, useEffect } from 'react';
-import { Grid, Container, Box, Button } from '@mui/material'
+import React, { useState } from 'react';
+import { Grid, Box } from '@mui/material'
 import { makeStyles } from '@mui/styles';
+import { useNavigate, NavLink } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
     navbar: {
@@ -10,10 +11,9 @@ const useStyles = makeStyles(theme => ({
         height: '75px',
         width: '100vw',
         padding: '0px 75px 0px 75px',
-        // fontFamily: 'Dosis, arial, sans-serif'
         fontFamily: 'Open Sans, arial, sans-serif',
         zIndex: '99',
-        // transition: '0.3s all'
+        transition: '0.3s all'
     },
     logo: {
         display: 'flex',
@@ -31,14 +31,17 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: 'transparent',
         border: 'none',
         color: 'rgba(255,255,255, 1)',
-
+        textDecoration: 'none'
     }
 }));
 
 
 const NavigationBar = () => {
 
+    // let navigate = useNavigate();
+
     const classes = useStyles();
+    const [top, setTop] = useState(false)
 
     const pages = [
         { name: 'CHARACTERS', path: 'characters' },
@@ -48,25 +51,27 @@ const NavigationBar = () => {
         { name: 'STORIES', path: 'stories' },
     ]
 
-    const [red, green, blue] = [1, 1, 1]
-    const navbar = document.querySelector('.makeStyles-navbar-1')
-
     window.addEventListener('scroll', () => {
-        let y = 1 + (window.scrollY || window.pageYOffset) / 150
-        y = y < 1 ? 1 : y // ensure y is always >= 1 (due to Safari's elastic scroll)
-        const [r, g, b] = [red / y, green / y, blue / y].map(Math.round)
-        navbar.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
+        if (window.scrollY >= 66) {
+            setTop(true)
+        } else {
+            setTop(false)
+        }
     })
 
+    const redirect = (pathname) => {
+        // navigate(`/${pathname}`)
+    }
+
     return (
-        <Box display="flex" className={classes.navbar}>
+        <Box display="flex" className={classes.navbar} style={{ backgroundColor: top ? '#010101' : 'transparent', height: top ? '60px' : '75px' }}>
             <Grid item md={6} lg={6} xl={9} className={classes.logo}>Home</Grid>
             {/* VALIDATION FOR SCREEN SIZE ==> BURGER OR TEXT BUTTONS */}
             {pages.map(page => (
                 <Grid key={page.path} item sm={2} md={1.5} lg={1} xl={0.5} className={classes.itemBox}>
-                    <button className={classes.item} onClick={() => console.log('AQUI')}>
+                    <a className={classes.item} href={`/${page.path}`}>
                         {page.name}
-                        </button>
+                    </a>
                 </Grid>
             ))}
         </Box>

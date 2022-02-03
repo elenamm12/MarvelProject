@@ -4,7 +4,6 @@ import shield from '../../assets/images/shield.jpeg'
 import hammer from '../../assets/images/thor-hammer.png'
 import { makeStyles } from '@mui/styles';
 import Divider from '../../components/Divider';
-import Credits from '../Credits';
 
 const useStyles = makeStyles(theme => ({
     main: {
@@ -87,24 +86,37 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const Dashboard = () => {
+const Credits = () => {
 
     const classes = useStyles();
 
     return (
         <div>
-            <Grid className={classes.main}>
-                <Grid className={classes.titleBox}>
-                    <p className={classes.title}>MARVEL ALMANAC</p>
-                    <p className={classes.subtitle}>A Walt Disney Studios' subsidiary film and television production company</p>
+            <Grid className={classes.credits}>
+                <Divider />
+                <Grid className={classes.creditTitle}>
+                    <Typography>
+                        CREDITS
+                    </Typography>
                 </Grid>
-                <Grid className={classes.dividerIcon}>
-                    <img src={hammer} className={classes.icon}></img>
+                <Grid container>
+                    <Grid>
+                        <Typography variant="h6">
+                            API: MARVEL DEVELOPER
+                        </Typography>
+                    </Grid>
+                    <Grid>
+                        <Typography variant="h6">
+                            DEPLOYMENT: NETLIFY
+                        </Typography>
+                    </Grid>
+                    <Grid>
+
+                    </Grid>
                 </Grid>
             </Grid>
-            <Credits />
         </div>
     );
 };
 
-export default Dashboard;
+export default Credits;

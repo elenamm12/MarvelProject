@@ -6,7 +6,7 @@ import { makeStyles } from '@mui/styles';
 const useStyles = makeStyles(theme => ({
     main: {
         height: '10px',
-        width: '100vw',
+        width: '100%',
         backgroundColor: '#891E15',
         // position: 'fixed',
     },
