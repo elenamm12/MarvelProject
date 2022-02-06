@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const CharacterCard = ({element}) => {
+const StoryCard = ({element}) => {
 
     const classes = useStyles();
 
@@ -36,7 +36,7 @@ const CharacterCard = ({element}) => {
         <Grid item xs={12} sm={12} md={12} lg={12}>
             <Grid container justifyContent="center">
                 <img className={classes.img} id="cardImg"
-                    src={`${element.thumbnail.path}/portrait_uncanny.${element.thumbnail.extension}`}
+                    src={element.thumbnail !== null ? `${element.thumbnail.path}/portrait_uncanny.${element.thumbnail.extension}` : comic}
                     onError={({ currentTarget }) => {
                         currentTarget.onerror = null; // prevents looping
                         currentTarget.src = `${comic}`;
@@ -45,15 +45,15 @@ const CharacterCard = ({element}) => {
             </Grid>
             <Divider />
             <Grid className={classes.infoBox}>
-                <h4 className={classes.title}>{element.name}</h4>
+                <h4 className={classes.title}>{element.title}</h4>
                 <p className={classes.information}>COMICS: {element.comics.available}</p>
                 <p className={classes.information}>SERIES: {element.series.available}</p>
                 <p className={classes.information}>EVENTS: {element.events.available}</p>
-                <p className={classes.information}>STORIES: {element.stories.available}</p>
+                <p className={classes.information}>CREATORS: {element.creators.available}</p>
             </Grid>
 
         </Grid>
     );
 };
 
-export default CharacterCard;
+export default StoryCard;

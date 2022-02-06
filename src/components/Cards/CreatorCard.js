@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const CharacterCard = ({element}) => {
+const CreatorCard = ({element}) => {
 
     const classes = useStyles();
 
@@ -45,7 +45,7 @@ const CharacterCard = ({element}) => {
             </Grid>
             <Divider />
             <Grid className={classes.infoBox}>
-                <h4 className={classes.title}>{element.name}</h4>
+                <h4 className={classes.title}>{element.fullName}</h4>
                 <p className={classes.information}>COMICS: {element.comics.available}</p>
                 <p className={classes.information}>SERIES: {element.series.available}</p>
                 <p className={classes.information}>EVENTS: {element.events.available}</p>
@@ -56,4 +56,4 @@ const CharacterCard = ({element}) => {
     );
 };
 
-export default CharacterCard;
+export default CreatorCard;

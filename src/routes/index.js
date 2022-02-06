@@ -3,7 +3,7 @@ import {Navigate, Route, Routes} from 'react-router';
 // import {useSelector} from 'react-redux';
 import {useLocation} from 'react-router-dom';
 import Dashboard from './Dashboard';
-import Characters from './Characters';
+import Galleria from './Galleria';
 
 // export const RestrictedRoute = ({component: Component, ...rest}) => {
 //     const {token} = ''
@@ -42,11 +42,7 @@ const RouterComponent = () => {
     return (
         <React.Fragment>
             <Routes>
-                <Route path="/characters" element={<Characters/>}/>
-                <Route path="/comics" element={<Dashboard/>}/>
-                <Route path="/creators" element={<Dashboard/>}/>
-                <Route path="/events" element={<Dashboard/>}/>
-                <Route path="/stories" element={<Dashboard/>}/>
+                <Route path="/galleria/:galleriaType" element={<Galleria/>}/>
                 <Route path="/" element={<Dashboard/>}/>
             </Routes>
         </React.Fragment>
