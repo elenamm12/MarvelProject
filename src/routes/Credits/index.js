@@ -1,87 +1,55 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import { Grid, Typography } from '@material-ui/core'
-import shield from '../../assets/images/shield.jpeg'
-import hammer from '../../assets/images/thor-hammer.png'
 import { makeStyles } from '@mui/styles';
 import Divider from '../../components/Divider';
+import comic from '../../assets/images/comic.jpeg'
+import api from '../../assets/images/api.jpeg'
+import deploy4 from '../../assets/images/deploy4.jpeg'
+
 
 const useStyles = makeStyles(theme => ({
-    main: {
-        height: '99vh',
-        width: '100vw',
-        backgroundColor: '#010101',
-        backgroundImage: `url(${shield})`,
-        backgroundAttachment: 'fixed',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: '50% auto',
-        backgroundPosition: 'top center',
-    },
-    backgroundImg: {
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'baseline',
-        position: 'absolute'
-    },
-    img: {
-        width: '50vw',
-        objectFit: 'contain'
-    },
-    dividerIcon: {
-        width: '100%',
-        position: 'absolute',
-        bottom: '30px',
-        textAlign: 'center'
-    },
-    icon: {
-        width: '30px',
-        objectFit: 'contain',
-        transform: 'rotate(-26deg)'
+    main: { 
+        height: '90vh'
     },
     credits: {
-        height: '20vh',
         width: '100vw',
+        height: '100%',
         backgroundColor: 'white',
     },
-    creditTitle: {
-        height: '10vh',
-        justifyContent: 'center',
-        display: 'flex',
-        alignItems: 'center',
-        '& .MuiTypography-body1': {
-            fontWeight: '200',
-            letterSpacing: '5px',
-            fontSize: '35px',
-            color: '#111',
-        }
+    container: {
+        marginTop: '40px',
+        marginBottom: '80px',
+        height: '100%',
     },
-    divider: {
-        height: '40vh',
-        width: '100vw',
-        backgroundColor: 'white',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'baseline'
+    img: {
+        width: '70%', 
+        height: '70%',
+        objectFit: 'cover',
+        filter: 'grayscale(100%)'
     },
-    titleBox: {
+    pannels: {
         textAlign: 'center',
-        position: 'absolute',
-        zIndex: '10',
-        width: '100vw',
-        top: '35vh',
+        height: '100%',
+        margin: '0 0 35px 0'
     },
-    title: {
-        color: 'rgba(255,255,255, 0.85)',
-        fontFamily: 'MarvelRegular',
-        fontSize: '80px',
-        letterSpacing: '5px',
-        margin: 0
-    },
-    subtitle: {
-        color: 'rgba(255,255,255, 0.70)',
+    elementsTitle: {
+        fontWeight: '200',
+        letterSpacing: '6px',
+        fontSize: '18px',
+        color: '#111',
         fontFamily: 'Open Sans, arial, sans-serif',
+        textTransform: 'uppercase',
+        margin: '10px 0 10px 0'
+    },
+    description: {
+        textAlign: 'justify',
+        textJustify: 'inter-word',
+        padding: '0 15% 0 15%',
+        fontWeight: '100',
         letterSpacing: '2px',
-        fontSize: '15px',
+        height: '20%',
+        color: '#111',
+        fontFamily: 'Open Sans, arial, sans-serif',
     }
 }));
 
@@ -90,28 +58,27 @@ const Credits = () => {
 
     const classes = useStyles();
 
+    const text = 'Lorem ipsum dolor sit amet, aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+
     return (
-        <div>
+        <div className={classes.main}>
             <Grid className={classes.credits}>
                 <Divider />
-                <Grid className={classes.creditTitle}>
-                    <Typography>
-                        CREDITS
-                    </Typography>
-                </Grid>
-                <Grid container>
-                    <Grid>
-                        <Typography variant="h6">
-                            API: MARVEL DEVELOPER
-                        </Typography>
+                <Grid container justifyContent="center" className={classes.container}>
+                    <Grid item xs={10} sm={4} md={4} lg={4} className={classes.pannels}>
+                        <img src={api} className={classes.img}/>
+                        <Typography className={classes.elementsTitle}>Api's Source</Typography>
+                        <Typography className={classes.description}>{text}</Typography>
                     </Grid>
-                    <Grid>
-                        <Typography variant="h6">
-                            DEPLOYMENT: NETLIFY
-                        </Typography>
+                    <Grid item xs={10} sm={4} md={4} lg={4} className={classes.pannels}>
+                        <img src={comic} className={classes.img}/>
+                        <Typography className={classes.elementsTitle}>Design Inspo</Typography>
+                        <Typography className={classes.description}>{text}</Typography>
                     </Grid>
-                    <Grid>
-
+                    <Grid item xs={10} sm={4} md={4} lg={4} className={classes.pannels}>
+                        <img src={deploy4} className={classes.img}/>
+                        <Typography className={classes.elementsTitle}>Deployment</Typography>
+                        <Typography className={classes.description}>{text}</Typography>
                     </Grid>
                 </Grid>
             </Grid>
