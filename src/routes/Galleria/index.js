@@ -46,25 +46,26 @@ const Galleria = () => {
     const [keyword, setKeyword] = useState('')
     const [loading, setLoading] = useState(true)
     const { galleriaType } = useParams();
+    const [page, setPage] = useState(0)
 
     useEffect(async () => {
         handleData()
-    }, [])
+    }, [ , page])
 
     const handleGetData = async () => {
         switch (galleriaType) {
             case 'characters':
-                return marvelService.getCharacters(keyword);
+                return marvelService.getCharacters(keyword, page);
             case 'comics':
-                return marvelService.getComics(keyword);
+                return marvelService.getComics(keyword, page);
             case 'creators':
-                return marvelService.getCreators(keyword);
+                return marvelService.getCreators(keyword, page);
             case 'events':
-                return marvelService.getEvents(keyword);
+                return marvelService.getEvents(keyword, page);
             case 'stories':
-                return marvelService.getStories(keyword);
+                return marvelService.getStories(keyword, page);
             default:
-                return marvelService.getCharacters(keyword);
+                return marvelService.getCharacters(keyword, page);
         }
     }
 
@@ -94,6 +95,10 @@ const Galleria = () => {
         setKeyword(event.target.value)
     }
 
+    const handlePage = (value) => {
+        setPage(value)
+    }
+
     return (
         <div>
             <Grid className={classes.main}>
@@ -104,7 +109,7 @@ const Galleria = () => {
                     </Grid>
                 </Grid>
             </Grid>
-            <LoadingGrid Component={<GridElements list={elements} pagination={pagination} cardType={galleriaType} />} loading={loading} />
+            <LoadingGrid Component={<GridElements page={page} handlePage={handlePage} list={elements} pagination={pagination} cardType={galleriaType} />} loading={loading} />
         </div>
     );
 };

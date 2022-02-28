@@ -6,6 +6,7 @@ import ComicCard from '../Cards/ComicCard';
 import CreatorCard from '../Cards/CreatorCard';
 import EventCard from '../Cards/EventCard';
 import StoryCard from '../Cards/StoryCard';
+import PaginationComponent from '../PaginationComponent';
 
 const useStyles = makeStyles(theme => ({
     main: {
@@ -35,7 +36,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const GridElements = ({ pagination, list, cardType }) => {
+const GridElements = ({ pagination, list, cardType, page, handlePage }) => {
 
     const classes = useStyles();
 
@@ -70,7 +71,7 @@ const GridElements = ({ pagination, list, cardType }) => {
 
     let date = new Date()
 
-
+    let count = Math.ceil(pagination.total/20)
 
     return (
         <div>
@@ -84,7 +85,7 @@ const GridElements = ({ pagination, list, cardType }) => {
                         ))}
                     </Grid>
                     <Grid>
-                        pagination
+                        <PaginationComponent count={count} page={page} onChange={handlePage} />
                     </Grid>
                 </Grid>
             </Grid>

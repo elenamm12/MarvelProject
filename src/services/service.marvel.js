@@ -9,8 +9,9 @@ export const marvelService = {
     getStories
 }
 
-async function getCharacters(keyword) {
+async function getCharacters(keyword, offset) {
     let url = getUrls().characters
+    url = url+"&offset="+(20*offset)
 
     if(keyword !== ''){
         url = url+'&nameStartsWith='+keyword
@@ -22,8 +23,9 @@ async function getCharacters(keyword) {
         })
 }
 
-async function getComics(keyword) {
+async function getComics(keyword, offset) {
     let url = getUrls().comics
+    url = url+"&offset="+(20*offset)
 
     if(keyword !== ''){
         url = url+'&titleStartsWith='+keyword
@@ -35,8 +37,9 @@ async function getComics(keyword) {
         })
 }
 
-async function getCreators(keyword) {
+async function getCreators(keyword, offset) {
     let url = getUrls().creators
+    url = url+"&offset="+(20*offset)
 
     if(keyword !== ''){
         url = url+'&nameStartsWith='+keyword
@@ -47,8 +50,9 @@ async function getCreators(keyword) {
             return result.data
         })
 }
-async function getEvents(keyword) {
+async function getEvents(keyword, offset) {
     let url = getUrls().events
+    url = url+"&offset="+(20*offset)
 
     if(keyword !== ''){
         url = url+'&nameStartsWith='+keyword
@@ -59,8 +63,9 @@ async function getEvents(keyword) {
             return result.data
         })
 }
-async function getStories(keyword) {
+async function getStories(keyword, offset) {
     let url = getUrls().stories
+    url = url+"&offset="+(20*offset)
 
     if(keyword !== ''){
         url = url+'&nameStartsWith='+keyword

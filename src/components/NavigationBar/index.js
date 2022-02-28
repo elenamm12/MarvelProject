@@ -18,6 +18,9 @@ const useStyles = makeStyles(theme => ({
         zIndex: '98',
         transition: '0.3s all',
         padding: '0 5% 0 0',
+        "& .MuiIconButton-root": {
+            color: "#891E15"
+        }
     },
     logo: {
         display: 'flex',
@@ -94,11 +97,11 @@ const NavigationBar = () => {
             ))}
             <Grid item xs={2} display={{ xs: "flex", sm: "none" }}>
                 {open ?
-                    <IconButton id="buttonClose" onClick={() => setOpen(false)} color="secondary" aria-label="upload picture" component="span">
+                    <IconButton id="buttonClose" onClick={() => setOpen(false)} aria-label="upload picture" component="span">
                         <CloseIcon />
                     </IconButton>
                     :
-                    <IconButton id="buttonOpen" onClick={() => setOpen(true)} color="secondary" aria-label="upload picture" component="span">
+                    <IconButton id="buttonOpen" onClick={() => setOpen(true)} aria-label="upload picture" component="span">
                         <MenuIcon />
                     </IconButton>
                 }
